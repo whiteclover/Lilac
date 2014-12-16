@@ -1,8 +1,8 @@
-lilac
+Lilac
 ########
 
 
-Currently, lilac is A Distributed Scheduler Task System.
+Currently, Lilac is A Distributed Scheduler Task System.
 
 Supports
 ===========
@@ -88,7 +88,7 @@ Set and Run Web Manager
 .. code-block:: python 
 
     import logging
-    from lilac.server import lilacWebServer
+    from lilac.server import LilacWebServer
     import os.path
 
     from lilac import db

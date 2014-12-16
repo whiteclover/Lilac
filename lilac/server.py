@@ -280,7 +280,7 @@ class lilacController(object):
         return render_template('404.html')
 
 
-class lilacWebServer(WebServer):
+class LilacWebServer(WebServer):
 
     def __init__(self, host='127.0.0.1', port=8080, mako_cache_dir=None, 
         cookie_secret='7oGwHH8NQDKn9hL12Gak9G/MEjZZYk4PsAxqKU4cJoY=',

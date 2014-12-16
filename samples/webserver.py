@@ -1,5 +1,5 @@
 import logging
-from lilac.server import lilacWebServer
+from lilac.server import LilacWebServer
 import os.path
 
 from lilac import db
@@ -9,7 +9,7 @@ db.setup('localhost', 'test', 'test', 'lilac', pool_opt={'minconn': 3, 'maxconn'
 
 def run(host='localhost', port=80, use_gevent=False, debug=False):
     setdebug(debug)
-    lilacWebServer(host=host,
+    LilacWebServer(host=host,
                 port=port, use_gevent=use_gevent, 
                 mako_cache_dir=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'cache'),
                 debug=debug).serve_forever()

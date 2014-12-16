@@ -39,7 +39,7 @@ CREATE TABLE `users` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users`(uid, username, real_name, email, password, status, role, created) VALUES(1, 'lilac', 'lilac',
-'lilac@test.com', '5c92e783db7e7285450961fa3c510168ee81d27890f7d09b6664838d', 'actived', 'root', now());
+INSERT INTO `users`(uid, username, real_name, email, password, status, role, created) VALUES(1, 'lilac', 'Lilac',
+'lilac@test.com', 'ea2020445e82529b9f030c346739395aea1dca55e275e5edb0942ce3', 'actived', 'root', now());
 
 SET @@character_set_client = @saved_cs_client;

@@ -1,0 +1,71 @@
+<%inherit file="base.html"/>
+
+<%def name="headIncludes()">
+    <title>Task</title>
+	<link rel="stylesheet" href="/assets/css/task.css">
+</%def>
+
+<%def name="body()">
+	<div id='content'>
+	    <hgroup class="wrap">
+        <h1>Task</h1>
+
+		<nav id='task-search'>
+			<form id='task-search-form'>
+				<input name='name' type='text' placeholder='Task name like expression' value='${name}'/>
+				<select name='status' value='running'>
+                % for s in statuses:
+                  % if s == status:
+                        <option value="${s}" selected>${s.capitalize()}</option>
+                    % else:
+                        <option value="${s}">${s.capitalize()}</option>
+                    % endif 
+                % endfor
+				</select>
+				<input id='task-submit' type='submit' value='Search' class='btn'/>
+			</form>
+		</nav>
+        </hgroup>
+		
+		<div id='banner'>
+			<div id='status-div'>
+				<ul>
+				% for s in statuses:
+					% if s == status:
+						<a  href='/task/status/${s}' class='status-current' >${s.capitalize()}</a>
+					% else:
+						<a  href='/task/status/${s}' >${s.capitalize()}</a>
+					% endif
+				% endfor
+				</ul>
+			</div>
+			<div id='new-task-div'>
+				<a  href='/task/add' target='_blank'>Add Task</a>
+			</div>
+		</div>
+		<div id='task-div'>
+			% if tasks:
+			<ul class="list">
+			% for task in tasks:
+            	<li>
+               	 	<a href="/task/${task.name}/edit">
+                	    <strong>${task.name}</strong>
+                    <span>Event: ${task.event}</span>
+                    <em class="highlight">Status: ${key_statuses[str(task.status)]}</em>
+                	</a>
+            	</li>
+            % endfor
+        	</ul>
+
+			% else:
+				<p style='text-align: center; with:100%;margin: 10px;'> Doesn't Find task with status: ${status}
+                % if name:
+                    and name : ${name}
+                % endif
+
+                </p>
+			% endif
+			 <aside class="paging">${tasks.links()}</aside>
+		</div>
+	</div>
+</%def>

@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* CSS Document */
+
+#flash {
+    margin-bottom: 10px;
+}
+
+    #flash .info, #flash .error, #flash .success {
+        padding: 10px 18px;
+        margin-bottom: 20px;
+
+        font-size: 13px;
+        line-height: 21px;
+        font-weight: 500;
+
+        border-radius: 5px;
+    }
+
+    #flash .info {
+        color: #fff;
+        background: #578cd9;
+    }
+
+    #flash .error {
+        color: #fff;
+        background: #d34937;
+    }
+
+    #flash .success {
+        color: #fff;
+        background: #64a524;
+    }

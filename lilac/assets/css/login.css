@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+#login-div {
+    height: 240px;
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #006699;
+    border-radius: 5px;
+    border-top: 10px solid #006699;
+}
+    #login-div p {
+        margin: 10px;
+        padding: 10px;
+        width: 200px;
+        color: #006699;
+        font-size: 20px;
+    }
+
+#login-form {
+    margin-left: 40px;
+    padding: 10px;
+
+}
+
+form input[type=text], input[type=password], input[type=email] {
+    height: 30px;
+    width: 300px;
+    margin: 5px auto;
+}
+
+#login-submit {
+    margin: 5px;
+    margin-left: 80px;
+    width: 80px;
+}

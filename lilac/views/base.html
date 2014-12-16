@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html>
+<head>
+	<meta name="viewport" content="width=600">
+	<meta charset="utf-8">
+	<meta htte-equiv="X-UA-Compatible" content="chrome=1">
+
+	<link rel="stylesheet" href="/assets/css/form.css">
+	<link rel="stylesheet" href="/assets/css/main.css">
+	
+	${next.headIncludes()}
+</head>
+<body>
+	<div id='header'>
+		<div id='header-nav'>
+			<span class='logo'>
+			<a href='/'>lilac</a>
+			</span>
+			<ul>
+				<li><a href="/task">Task</a></li>
+				<li><a href='/user'>User</a></li>
+			<div id='logout'>
+				<a href="/logout">Logout</a>
+			</div>
+			</ul>
+	
+		</div>
+		
+	</div>
+
+	<div id='main'>
+		${next.body()}
+	 	<div id="main-footer">
+	        <ul>
+	                <li>&copy; 2014 Lilac</li>
+	                <li><a target="_blank"  class = "footer-link"  href="https://github.com/thomashuang/lilac" target='_blank'>About</a></li>
+	                <li><a target="_blank" class = "footer-link"  href="https://github.com/thomashuang/lilac/blob/master/LICENSE" target='_blank'>License</a></li>
+	        </ul>
+		</div>	
+	</div>
+
+
+</body>
+</html>
+
+<%def name="headIncludes()"></%def>

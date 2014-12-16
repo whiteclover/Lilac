@@ -1,0 +1,112 @@
+<%inherit file="base.html"/>
+
+
+<%def name="headIncludes()">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/assets/css/flash.css">
+    <script src="/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="/assets/js/autosubmit.js"></script>
+</%def>
+
+<%def name="body()">
+
+
+<div id='wrap'>
+
+    <hgroup class="wrap">
+        <h1>Task: ${task.name}</h1>
+    </hgroup>
+    <div id='flash' style='display:none;'><div class='error'></div></div>
+    <form id='task-form' method="post" action='/task/${task.name}/edit' novalidate>
+            <p>
+                <label>Action :</label>
+                <input type='text' name='action' value='${task.action}'>
+            </p>
+            <p>
+                <label>Data:</label>
+                <input type='text' name='data' value='${task.data}'>
+            </p>
+            <p>
+                <label>Event:</label>
+                <input type='text' name='event' value='${task.event}'>
+            </p>
+
+            <p>
+                <label>Status:</label>
+                
+                % for status, code in statuses.items():
+                    % if code == task.status:
+                        <select name='status' id='status'  value='${status}'>
+                    % endif
+                % endfor
+
+                % for status, code in statuses.items():
+                    % if code == task.status:
+                    <option value="${status}" selected>${status}</option>
+                    % else:
+                    <option value="${status}">${status}</option>
+                    % endif
+                % endfor
+                </select>
+            </p> 
+
+
+        <aside>
+            <div  class='btn' id='update'>Update</div>
+            <div class='btn delete red' id='${task.name}'>Delete</div>
+        </aside>
+    </form>
+    <script>
+        $('.delete').on('click', function() 
+        {
+            var sure = confirm('Delete this task?');
+            if (sure)
+            {
+                var name = $(this).attr('id');
+                $.ajax(
+                {
+                    type:"POST",
+                    url:"/task/" + name + "/delete",
+                    dataType: 'json',
+                    success:function(res)
+                    {   
+                        var $flash = $("#flash");
+                        $flash.children('div').removeClass('info error success');
+                        if (res.status != 'redirect')
+                        {
+                            $flash = $("#flash");
+                            $flash.children('div').addClass('info');
+                            $flash.children('div').text(res.msg);
+                            $flash.fadeIn(100).fadeOut(4000).fadeOut(1000);
+                           
+                        }
+                        else 
+                        {
+                            $flash = $("#flash");
+                             $flash.children('div').addClass(res.status);
+                            $flash.children('div').text(res.msg);
+                            $flash.fadeIn(100).fadeOut(3000).fadeOut(1000);
+                            window.location.href = res.url;
+                        }
+
+                    }
+
+                });
+            }
+
+        });
+
+
+
+        $('#update').on('click', function(e) 
+        {
+            console.log('update');
+            var $form = $('#task-form');
+            $form.autosubmit();
+
+        });
+
+    </script>
+</div>
+
+</%def>

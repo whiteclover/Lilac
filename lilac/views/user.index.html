@@ -1,0 +1,32 @@
+<%inherit file="base.html"/>
+
+<%def name="headIncludes()">
+    <title>User</title>
+</%def>
+
+
+<%def name="body()">
+    <div class="wrap">
+        <hgroup class="wrap">
+        <h1>User</h1>
+
+        <nav>
+            <a href='/user/add' class='btn'>Add new a user</a>
+        </nav>
+        </hgroup>
+        <ul class="list">
+            % for user in users:
+            <li>
+                <a href="/user/${user.uid}/edit">
+                    <strong>${user.real_name}</strong>
+                    <span>Username: ${user.username}</span>
+                    <em class="highlight">Role: ${user.role}</em>
+                </a>
+            </li>
+            % endfor
+        </ul>
+
+        <aside class="paging">${users.links()}</aside>
+    </div>
+</%def>
+

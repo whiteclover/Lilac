@@ -1,0 +1,55 @@
+<%inherit file="base.html"/>
+
+
+<%def name="headIncludes()">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="/assets/css/flash.css">
+    <script src="/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="/assets/js/autosubmit.js"></script>
+</%def>
+
+<%def name="body()">
+
+<div id='wrap'>
+
+    <hgroup class="wrap">
+        <h1>Add Task</h1>
+    </hgroup>
+    <div id='flash' style='display:none;'><div class='error'></div></div>
+    <form id='task-form' method="post" action='/task/add' novalidate autocomplete="off">
+
+            <p>
+                <label>Name:</label>
+                <input type='text' name='name'>
+            </p>
+            <p>
+                <label>Action :</label>
+                <input type='text' name='action'>
+            </p>
+            <p>
+                <label>Data:</label>
+                <input type='text' name='data' >
+            </p>
+            <p>
+                <label>Event:</label>
+                <input type='text' name='event'>
+            </p>
+
+
+        <aside>
+            <div  class='btn' id='add'>Add</div>
+        </aside>
+    </form>
+
+        <script>
+        $('#add').on('click', function(e) 
+        {
+            var $form = $('#task-form');
+            $form.autosubmit();
+
+        });
+        </script>
+
+</div>
+
+</%def>

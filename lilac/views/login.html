@@ -1,0 +1,21 @@
+<%inherit file="base.html"/>
+
+<%def name="headIncludes()">
+	<title>Login</title>
+	<link rel="stylesheet" href="/assets/css/login.css">
+</%def>
+
+<%def name="body()">
+	<div id='login-div'>
+		<p>Login</p>
+		<form id='login-form' method='POST' action='/login'>
+			<label for='username'>User Name:</label>
+			<input name='username' type='text' />
+			<br/>
+			<label for='password'>Password:</label>
+			<input name='password' type='password'/>
+			<br/>
+			<input id='login-submit' type='submit' value='Login' class='btn'/>
+		</form>
+	</div>
+</%def>

@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+#content {
+	/*border: 1px solid #C0C0C0;*/
+	border-radius: 2px;
+	width: 960px;
+
+}
+
+#banner {
+	margin-top: 20px;
+	float: left;
+	width: 155px;
+
+	
+}
+
+#task-div {
+	float: left;
+	width: 760px;
+	/*margin-left: 5px;*/
+	padding: 5px;
+
+	margin-bottom: 10px;
+}	
+
+
+#status-div a {
+	display: block;
+	text-decoration: none;
+	
+	font-size: 16px;
+	width: 120px;
+	height: 18px;
+	margin: 5px;
+	padding: 6px;
+	padding-left: 15px;
+	color: #327DC8;
+}
+
+#new-task-div a {
+
+	border-top: 1px solid #C0C0C0;
+
+	display: block;
+	
+	font-size: 18px;
+	width: 120px;
+	height: 18px;
+	margin: 20px 5px 5px 5px;
+	padding: 20px 6px 6px 15px;
+
+	color: #327DC8;
+}
+
+#new-task-div {
+
+}
+#new-task-div a:hover {
+	color: #f60f60;
+}
+
+.status-current {
+	
+	background-color: #0f820c;
+	color: white !important; 
+}
+
+
+#status-div a:hover {
+	text-decoration: underline;
+	
+}
+
+
+#task-search {
+
+	height: 60px;
+}
+
+#task-search-form {
+	margin-top: 5px;
+	float: right;
+	clear:both;
+	margin-right: 50px;
+}
+
+#task-search input[type=text], input[type=password], input[type=email] {
+	height: 33px;
+	width: 200px;
+}
+
+
+#task-submit  {
+	margin-top: 2px; 
+	height: 33px;
+}
+
+
+
+
+
+

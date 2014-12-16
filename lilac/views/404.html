@@ -1,0 +1,36 @@
+<%inherit file="base.html"/>
+
+
+<%def name="headIncludes()">
+    <title>Not Found</title>
+    <style>
+        .wrap {
+            height: 250px;
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 50px;
+            padding:10px;
+
+        }
+
+        .wrap h1 {
+            padding: 20px 20px 20px 5px;
+        }
+
+        .wrap p {
+            font-size: 20px;
+            padding-left: 20px;
+        }
+
+    </style>
+</%def>
+
+<%def name="body()">
+    <div class='wrap'>
+        <h1>Page not found</h1>
+
+        <p>Unfortunately, the page could not be found. Your best is either to try the <a href='/'>homepage </a> 
+        or go and cry in corner (although I don’t recommend the latter). </p>
+
+    </div>
+</%def>

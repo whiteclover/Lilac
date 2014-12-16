@@ -10,7 +10,7 @@ setup(
     description = "A Python Distributed Task System",
     license = "GPL",
     keywords = "Python Distributed Task System",
-    url='https://github.com/thomashuang/lilac',
+    url='https://github.com/thomashuang/Lilac',
     long_description=open('README.rst').read(),
     packages=find_packages(),
     zip_safe=False,

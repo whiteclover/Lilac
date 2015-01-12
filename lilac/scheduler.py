@@ -4,7 +4,7 @@ import time
 import threading
 import sys
 import Queue
-from lilac.db import DBError
+from db import DBError
 from lilac.model import Task
 from lilac.orm import Backend
 from datetime import datetime, timedelta

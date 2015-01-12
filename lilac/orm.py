@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-from lilac import db
+import db
 from lilac.model import Task, User
-from lilac.util import json_decode, json_encode
+from solo.util import json_decode, json_encode
 from lilac.paginator import Paginator
 
 from datetime import datetime
@@ -62,14 +62,14 @@ class TaskMapper(object):
         return db.query(select + where , args)[0][0]
 
     def find_by_cron_id(self, cron_id):
-        res = db.query_one('SELECT * FROM cron WHERE cron_id=%s', (cron_id,))
+        res = db.query('SELECT * FROM cron WHERE cron_id=%s', (cron_id,))
         if res:
-            return self._load(res)
+            return self._load(res[0])
 
     def find(self, name):
-        res = db.query_one('SELECT * FROM cron WHERE name=%s', (name,))
+        res = db.query('SELECT * FROM cron WHERE name=%s', (name,))
         if res:
-            return self._load(res)
+            return self._load(res[0])
 
     def find_by_task_id(self, task_id):
         results = db.query('SELECT * FROM cron WHERE task_id=%s', (task_id,))

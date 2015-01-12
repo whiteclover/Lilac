@@ -28,6 +28,15 @@ What will be in future
 #. Add Queued task supports (Maybe zeromq or rabbitmq backend)
 
 
+Requirement
+===========
+
+The modules are required to run solo as below:
+
+#. `solo <https://github.com/thomashuang/solo>`_
+#. `db <https://github.com/thomashuang/dbpy>`_
+
+
 How to install
 ==============
 
@@ -38,7 +47,6 @@ Firstly download or fetch it form github then run the command in shell:
     cd lilac # the path to the project
     python setup.py install
 
-.. note:: Make sure you had installed ``MySQLdb`` (``MySQL-python``), ``cherrypy``, ``mako`` before install the module
 
 Compatibility
 =============
@@ -91,17 +99,14 @@ Set and Run Web Manager
     from lilac.server import LilacWebServer
     import os.path
 
-    from lilac import db
+    import db
 
-    # setup db setting 
-    # pool_opt sets the db pool min connections and max connections
-    db.setup('localhost', 'test', 'test', 'lilac', pool_opt={'minconn': 3, 'maxconn': 10})
+    db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
 
-
-    def run(host='localhost', port=80, use_gevent=False, debug=False):
+    def run(host='localhost', port=8080, debug=False):
         setdebug(debug)
-        lilacWebServer(host=host,
-                    port=port, use_gevent=use_gevent, 
+        LilacWebServer(host=host,
+                    port=port,
                     mako_cache_dir=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'cache'),
                     debug=debug).serve_forever()
 
@@ -137,13 +142,13 @@ Here Is A Demo :
 
 .. code-block:: python
 
-    from lilac import db
+    import db
     from datetime import datetime
     import urllib2
     from lilac.app import App
     from lilac.scheduler import Scheduler
-    import logging
-    
+    import logging 
+
     LOGGER = logging.getLogger(__name__)
 
     if __name__ == '__main__':
@@ -155,20 +160,19 @@ Here Is A Demo :
             except:
                 LOGGER.info('open failed')
             LOGGER.info('session: %s, date:%s,', session, date)
-     
+         
         def setdebug(debug=False):
             level = logging.DEBUG if debug else logging.INFO
             logging.basicConfig(level=level,
-                                format='%(asctime)s %(levelname)-8s %(message)s',
-                                datefmt='%Y-%m-%d %H:%M:%S', filemode='a+')
+                                    format='%(asctime)s %(levelname)-8s %(message)s',
+                                    datefmt='%Y-%m-%d %H:%M:%S', filemode='a+')
         setdebug(False)
-        db.setup('localhost', 'test', 'test', 'lilac',
-                     pool_opt={'minconn': 3, 'maxconn': 10})
-     
+        db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
+         
         app = App()
         app.add_task('task.test', get_date)
         scheduler = Scheduler(app, 20, 20, 100)
-     
+         
         db.execute('delete from cron')
         for i in range(100):
             if i % 2 == 0:
@@ -176,7 +180,7 @@ Here Is A Demo :
                 action = 'task.not_found'
             else:
                 action = 'task.test'
-            scheduler.add_task('name_%d' %(i), 'every 2', action, datetime.now(), 'https://www.google.com', session=i)
+            scheduler.add_task('name_%d' %(i), 'every 2', action, datetime.now(), 'http://www.google.com', session=i)
         scheduler.run()
 
 Event
@@ -218,7 +222,7 @@ and the every sub pattern only support below regex expression format::
 LICENSE
 =======
 
-    Copyright (C) 2014 Thomas Huang
+    Copyright (C) 2014-2015 Thomas Huang
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

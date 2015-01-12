@@ -2,15 +2,14 @@ import logging
 from lilac.server import LilacWebServer
 import os.path
 
-from lilac import db
+import db
 
-db.setup('localhost', 'test', 'test', 'lilac', pool_opt={'minconn': 3, 'maxconn': 10})
+db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
 
-
-def run(host='localhost', port=80, use_gevent=False, debug=False):
+def run(host='localhost', port=8080, debug=False):
     setdebug(debug)
     LilacWebServer(host=host,
-                port=port, use_gevent=use_gevent, 
+                port=port,
                 mako_cache_dir=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'cache'),
                 debug=debug).serve_forever()
 

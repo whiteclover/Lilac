@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from lilac import db
+import db
 from datetime import datetime
 import urllib2
 from lilac.app import App
@@ -25,8 +25,7 @@ if __name__ == '__main__':
                                 format='%(asctime)s %(levelname)-8s %(message)s',
                                 datefmt='%Y-%m-%d %H:%M:%S', filemode='a+')
     setdebug(False)
-    db.setup('localhost', 'test', 'test', 'lilac',
-        pool_opt={'minconn': 3, 'maxconn': 10})
+    db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
      
     app = App()
     app.add_task('task.test', get_date)

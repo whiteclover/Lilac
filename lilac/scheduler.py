@@ -6,7 +6,7 @@ import sys
 import Queue
 from lilac.db import DBError
 from lilac.model import Task
-from lilac.data import Backend
+from lilac.orm import Backend
 from datetime import datetime, timedelta
 
 try:

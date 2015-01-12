@@ -1,6 +1,6 @@
-from lilac import db
+import db
 from lilac.model import Task, User
-from lilac.data import Backend
+from lilac.orm import Backend
 
 
 import unittest
@@ -9,9 +9,8 @@ import unittest
 class TaskMapperTest(unittest.TestCase):
 
     def setUp(self):
-        setattr(db, '__connections', {})
-        db.setup('localhost', 'test', 'test', 'lilac',
-                 pool_opt={'minconn': 3, 'maxconn': 10})
+        setattr(db, '__db', {})
+        db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
         self.task = Task(
             None, 'task_id', 'job_test', 'job.test', {'args': (), 'kw': {}}, 'every 5')
         Backend('task').delete_by_name('job_test')
@@ -83,14 +82,13 @@ class TaskMapperTest(unittest.TestCase):
 class UserMapper(unittest.TestCase):
 
     def setUp(self):
-        setattr(db, '__connections', {})
-        db.setup('localhost', 'test', 'test', 'lilac',
-                 pool_opt={'minconn': 3, 'maxconn': 10})
-        self.user = User('username', 'email', 'real_name', 'password', 'active')
+        setattr(db, '__db', {})
+        db.setup({ 'host': 'localhost', 'user': 'test', 'passwd': 'test', 'db': 'lilac'})
+        self.user = User('username', 'email', 'real_name', 'password', 'actived')
         db.execute('DELETE FROM users WHERE email=%s or email=%s',
                    (self.user.email, 'email2'))
         Backend('user').save(self.user)
-        self.uid = db.query_one('SELECT uid FROM users WHERE email=%s', (self.user.email,))[0]
+        self.uid = db.query('SELECT uid FROM users WHERE email=%s', (self.user.email,))[0][0]
 
     def test_find(self):
         user = Backend('user').find(self.uid)

@@ -14,7 +14,7 @@ CREATE TABLE `cron` (
   `run_times` INT(11) unsigned NOT NULL COMMENT 'the total run times of the current task',
   `attempts` TINYINT DEFAULT 0 NOT NULL COMMENT 'The attempts times when task run failed',
   `status` TINYINT unsigned DEFAULT 0 COMMENT 'the status of task (running, stop...)',
-  `created` DATETIME NOT NULL DEFAULT NOW() COMMENT 'The DATETIME when the entry was created.',
+  `created` DATETIME NOT NULL COMMENT 'The DATETIME when the entry was created.',
   `last_five_logs` TEXT NOT NULL COMMENT 'the last five logs of the current task',
   
   PRIMARY KEY `cron_id` (`cron_id`),
@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `password` CHAR(56) NOT NULL COMMENT 'The sha224 encypted password',
   `status` enum('actived', 'banned') NOT NULL COMMENT 'The status of the current user',
   `role` enum('root', 'administrator','user') NOT NULL COMMENT 'The role of the current user',
-  `created` DATETIME NOT NULL DEFAULT NOW() COMMENT 'The DATETIME when the user was created.',
+  `created` DATETIME NOT NULL  COMMENT 'The DATETIME when the user was created.',
 
   PRIMARY KEY (`uid`),
   UNIQUE KEY (`email`)
@@ -40,6 +40,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `users`(uid, username, real_name, email, password, status, role, created) VALUES(1, 'lilac', 'Lilac',
-'lilac@test.com', 'ea2020445e82529b9f030c346739395aea1dca55e275e5edb0942ce3', 'actived', 'root', now());
+'lilac@test.com', 'ea2020445e82529b9f030c346739395aea1dca55e275e5edb0942ce3, 'actived', 'root', now());
 
 SET @@character_set_client = @saved_cs_client;

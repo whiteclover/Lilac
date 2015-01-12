@@ -19,7 +19,7 @@ setup(
               # Non-.py files to distribute as part of each package
               'lilac': ['assets/css/*','assets/js/*', 'views/*']
     },
-    install_requires = ['setuptools', 'mako', 'cherrypy', 'MySQL-python'],
+    install_requires = ['setuptools', 'solo', 'db'],
     test_suite='unittests',
     classifiers=(
         "Development Status :: Production/Alpha",

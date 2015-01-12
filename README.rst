@@ -13,7 +13,7 @@ Supports
 #. Attempting tasks that fail
 #. A thread-safe DB Api, and supports master/slave mode 
 #. Take advantage of data-mapper pattern
-#. A Web Management Tool (Built in MVC pattern writen by mako gevent cherrypy)
+#. A Web Management Tool (Built in MVC pattern with `solo <https://github.com/thomashuang/solo>`_ and  `db <https://github.com/thomashuang/dbpy>`_ )
 
 .. image:: https://github.com/thomashuang/lilac/blob/master/docs/img/task.png
 

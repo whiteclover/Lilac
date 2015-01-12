@@ -31,7 +31,7 @@ What will be in future
 Requirement
 ===========
 
-The modules are required to run solo as below:
+The modules are required to run lilac as below:
 
 #. `solo <https://github.com/thomashuang/solo>`_
 #. `db <https://github.com/thomashuang/dbpy>`_

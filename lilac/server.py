@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-
-
 import re
 import logging
 import os.path
@@ -10,9 +8,8 @@ from solo.web.app import App
 from solo.web.server import WebServer
 from solo.util import json_encode
 
+
 LOGGER = logging.getLogger('lilac.server')
-
-
 
 class LilacWebServer(object):
 
@@ -57,7 +54,6 @@ class LilacWebServer(object):
 
         user_menu(m)
         task_menu(m)
-
 
 
     def bootstrap_template(self):

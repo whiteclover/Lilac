@@ -1,10 +1,12 @@
- #!/usr/bin/env python
- 
+#!/usr/bin/env python
+
+
 import logging
- 
+
+
 LOGGER = logging.getLogger('app')
  
- 
+
 class App(object):
  
     def __init__(self):

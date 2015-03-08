@@ -14,7 +14,7 @@ class Paginator(object):
         self.perpage = perpage
         self.url = url
         self._index = 0
-        self.gule = glue
+        self.glue = glue
 
     def next_link(self, text=None, default=''):
         text = text or self._next

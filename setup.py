@@ -19,7 +19,7 @@ setup(
               # Non-.py files to distribute as part of each package
               'lilac': ['assets/css/*','assets/js/*', 'views/*']
     },
-    install_requires = ['setuptools', 'solo', 'db'],
+    install_requires = ['setuptools', 'solo', 'dbpy'],
     test_suite='unittests',
     classifiers=(
         "Development Status :: Production/Alpha",
